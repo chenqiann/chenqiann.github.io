@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Deep Animation Video Interpolation in the WildSiyao, Li, et al [Paper] [Code] [Data] Paper ReadingIntroductionDifferent from natural video interpolation, animation video has unique characteristics:  T">
+    <meta name="description" content="Deep Animation Video Interpolation in the Wild Siyao, Li, et al [Paper] [Code] [Data] Paper Reading Introduction Different from natural video interpolation, animation video has unique characteristics:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AnimeInterp">
 <meta property="og:url" content="http://example.com/2021/10/02/AnimeInterp/index.html">
 <meta property="og:site_name" content="ChenQian&#39;s Blog">
-<meta property="og:description" content="Deep Animation Video Interpolation in the WildSiyao, Li, et al [Paper] [Code] [Data] Paper ReadingIntroductionDifferent from natural video interpolation, animation video has unique characteristics:  T">
+<meta property="og:description" content="Deep Animation Video Interpolation in the Wild Siyao, Li, et al [Paper] [Code] [Data] Paper Reading Introduction Different from natural video interpolation, animation video has unique characteristics:">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/framework.png">
 <meta property="og:image" content="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/sgm_module.png">
@@ -53,11 +53,17 @@
     
 	<!-- mathjax -->
 	
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+		<script type="text/x-mathjax-config">
+		  MathJax.Hub.Config({
+			tex2jax: {
+			  skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+			  inlineMath: [['$','$']]
+			}
+		  });
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	
+<meta name="generator" content="Hexo 6.1.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
@@ -112,7 +118,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-Animation-Video-Interpolation-in-the-Wild"><span class="toc-number">1.</span> <span class="toc-text">Deep Animation Video Interpolation in the Wild</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paper-Reading"><span class="toc-number">1.1.</span> <span class="toc-text">Paper Reading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Contributions"><span class="toc-number">1.1.2.</span> <span class="toc-text">Contributions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limits"><span class="toc-number">1.1.3.</span> <span class="toc-text">Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Framework-with-Dataset-and-Correspondent-Codes"><span class="toc-number">1.1.4.</span> <span class="toc-text">Framework with Dataset and Correspondent Codes</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Framework"><span class="toc-number">1.1.4.0.0.1.</span> <span class="toc-text">Framework</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dataset"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">-Dataset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Segment-Guided-Matching-SGM-Module"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">-Segment-Guided Matching (SGM Module)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Recurrent-Flow-Refinement-Network-RFR-Module"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">-Recurrent Flow Refinement Network (RFR Module)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Frame-Warping-and-Synthesis"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">-Frame Warping and Synthesis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">1.1.5.</span> <span class="toc-text">References</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#deep-animation-video-interpolation-in-the-wild"><span class="toc-number">1.</span> <span class="toc-text">Deep Animation Video Interpolation in the Wild</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#paper-reading"><span class="toc-number">1.1.</span> <span class="toc-text">Paper Reading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-number">1.1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limits"><span class="toc-number">1.1.2.</span> <span class="toc-text">Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">1.1.3.</span> <span class="toc-text">References</span></a></li></ol></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -156,77 +162,156 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Deep-Animation-Video-Interpolation-in-the-Wild"><a href="#Deep-Animation-Video-Interpolation-in-the-Wild" class="headerlink" title="Deep Animation Video Interpolation in the Wild"></a>Deep Animation Video Interpolation in the Wild</h1><p>Siyao, Li, et al</p>
+    <h1 id="deep-animation-video-interpolation-in-the-wild">Deep Animation Video Interpolation in the Wild</h1>
+<p>Siyao, Li, et al</p>
 <p><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content/CVPR2021/papers/Siyao_Deep_Animation_Video_Interpolation_in_the_Wild_CVPR_2021_paper.pdf">[Paper]</a> <a target="_blank" rel="noopener" href="https://github.com/lisiyao21/AnimeInterp">[Code]</a> <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XBDuiEgdd6c0S4OXLF4QvgSn_XNPwc-g/view">[Data]</a></p>
-<h2 id="Paper-Reading"><a href="#Paper-Reading" class="headerlink" title="Paper Reading"></a>Paper Reading</h2><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Different from natural video interpolation, animation video has unique characteristics:</p>
+<h2 id="paper-reading">Paper Reading</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Different from natural video interpolation, animation video has unique characteristics:</p>
 <ul>
 <li>Texture Insufficiency: Cartoons comprise lines and smooth color pieces. The smooth areas lack textures and make it difficult to estimate accurate motions on animation videos.</li>
 <li>Large Motions: Cartoons express stories via exaggeration. Some of the motions are non-linear and extremely large.</li>
 </ul>
 <p>Along with original challenges of natural video interpolation, like occlussion handling, video interpolation in animations remains a challenging task.</p>
 <p>This paper propsed an effective framework, AnimeInterp<a href="#references">[8]</a>, with two dedicated modules, <a href="#-segment-guided-matching-sgm-module">SGM</a> and <a href="#-recurrent-flow-refinement-network-rfr-module">RFR</a>, in a coarse-to-fine manner.</p>
-<hr>
-<h3 id="Contributions"><a href="#Contributions" class="headerlink" title="Contributions"></a>Contributions</h3><ul>
-<li>Formally define and study the animation video interpolation problem for the first time.</li>
-<li>Propose an effective animation interpolation framework named AnimeInterp with two dedicated modules to resolve the “lack of textures” and “non-linear and extremely large motion” challenges, which outperforms existing state-of-the-art methods both quantitatively and qualitatively.</li>
-<li>Build a large-scale cartoon triplet dataset called ATD-12K with large content diversity representing many types of animations to test animation video interpolation methods.</li>
-</ul>
-<hr>
-<h3 id="Limits"><a href="#Limits" class="headerlink" title="Limits"></a>Limits</h3><ul>
+<table style="width:22%;">
+<colgroup>
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>### Contributions ###</td>
+</tr>
+<tr class="even">
+<td>- Formally define and study the animation video interpolation problem for the first time. - Propose an effective animation interpolation framework named AnimeInterp with two dedicated modules to resolve the “lack of textures” and “non-linear and extremely large motion” challenges, which outperforms existing state-of-the-art methods both quantitatively and qualitatively. - Build a large-scale cartoon triplet dataset called ATD-12K with large content diversity representing many types of animations to test animation video interpolation methods.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="limits">Limits</h3>
+<ul>
 <li>Not mentioned</li>
 </ul>
-<hr>
-<h3 id="Framework-with-Dataset-and-Correspondent-Codes"><a href="#Framework-with-Dataset-and-Correspondent-Codes" class="headerlink" title="Framework with Dataset and Correspondent Codes"></a>Framework with Dataset and Correspondent Codes</h3><h6 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h6><p><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/framework.png" alt="framework"></p>
-<h4 id="Dataset"><a href="#Dataset" class="headerlink" title="-Dataset"></a>-Dataset</h4><p><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XBDuiEgdd6c0S4OXLF4QvgSn_XNPwc-g/view">ATD-12K</a> Dataset<a href="#references">[8]</a> with triplets of animation frames from videos in the wild. It has been splited into 10k training samples and 2k test samples. </p>
-<p>Specific annotations are in .json file, include:</p>
-<ul>
-<li>difficulty levels: 0 : “Easy”, 1 : “Medium”, 2 :  “Hard”.</li>
-<li>motion RoI(Region of Interest): x, y, width, height.</li>
-<li>general_motion_type: “translation”, “rotation”, “scaling”, “deformation”.</li>
-<li>behavior: “speaking”, “walking”, “eating”, “sporting”,<br>“fetching”, “others”.</li>
-</ul>
-<h4 id="Segment-Guided-Matching-SGM-Module"><a href="#Segment-Guided-Matching-SGM-Module" class="headerlink" title="-Segment-Guided Matching (SGM Module)"></a>-Segment-Guided Matching (SGM Module)</h4><p><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/sgm_module.png" alt="sgm"></p>
-<p>input: $I_{0}$, $I_{1}$ - input images</p>
-<p>output: $f_{0\rightarrow1}$, $f_{1\rightarrow0}$ - coarse optical flow</p>
-<p>In this part, ‘.’ refer to directry models&#x2F;sgm_model.</p>
-<p><strong>1. Color Piece Segmentation</strong></p>
-<p>Laplacian filter to extract contours of animation frames<a href="#references">[1]</a>.<br>[<strong>.&#x2F;gen_labelmap.py&#x2F;dline_of</strong>].</p>
-<p> “Trapped-<br>ball” algorithm to fill the contours then generate color pieces<a href="#references">[1]</a>. [<strong>.&#x2F;linefiller &amp; gen_labelmap.py&#x2F;trapped_ball_processed</strong>]</p>
-<p>A segmentation map where pixels<br>of each color piece is labeled by an identity number. [<strong>.&#x2F;linefiller&#x2F;trappedball_fill.py&#x2F;build_fill_map</strong>]</p>
-<p><strong>2. Feature Collection</strong></p>
-<p>Extract features of relu1_2, relu2_2, relu3_4 and relu4_4 layers from pretrained VGG-19 model<a href="#references">[2]</a>. [<strong>.&#x2F;my_models.py&#x2F;create_VGGFeatNet</strong>]</p>
-<p>Assemble the features belonging to one segment by<br>the super-pixel pooling<a href="#references">[3]</a>. [<strong>gen_sgm.py&#x2F;superpixel_pooling</strong>]</p>
-<p><strong>3. Color Piece Matching</strong></p>
-<p>Compute an affinity metric $\mathcal{A}$ [<strong>.&#x2F;gen_sgm.py</strong> line 553], the distance penalty $\mathcal{L}_{dist}$ [<strong>.&#x2F;gen_sgm.py</strong> line 559], the size penalty $\mathcal{L}_{size}$ [<strong>.&#x2F;gen_sgm.py</strong> line 564], the matching map $\mathcal{M}$ [<strong>.&#x2F;gen_sgm.py&#x2F;mutual_matching</strong>].</p>
-<p><strong>4. Flow Generation</strong></p>
-<p>Compute flow f [<strong>.&#x2F;gen_sgm.py&#x2F;get_guidance_flow</strong>]</p>
-<h4 id="Recurrent-Flow-Refinement-Network-RFR-Module"><a href="#Recurrent-Flow-Refinement-Network-RFR-Module" class="headerlink" title="-Recurrent Flow Refinement Network (RFR Module)"></a>-Recurrent Flow Refinement Network (RFR Module)</h4><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/rfr_module.png" alt="rfr" width="311" height="391" align="bottom" />
-
-<p>input: $I_{0}$, $I_{1}$, $f_{0\rightarrow1}$, $f_{1\rightarrow0}$ - input images and coarse optical flow computed by SGM module</p>
-<p>output: $f^{‘}_{0\rightarrow1}$, $f^{’}_{1\rightarrow0}$ - fine flow</p>
-<p>In this part, ‘.’ refer to directry models&#x2F;rfr_model.</p>
-<p>Inspired by <a href="#references">[4]</a>, design a transformer-like architecture to recurrently refine the piece-wise flow.</p>
-<ul>
-<li>3-layer Conv [<strong>.&#x2F;rfr_new.py&#x2F;ErrorAttention</strong>]</li>
-<li>Feature Net [<strong>.&#x2F;extractor.py&#x2F;BasicEncoder</strong>]</li>
-<li>ConvGRU<a href="#references">[5]</a> [<strong>.&#x2F;update.py&#x2F;SepConvGRU</strong>]</li>
-<li>Correlation [<strong>.&#x2F;corr.py&#x2F;CorrBlock</strong>]</li>
-</ul>
-<h4 id="Frame-Warping-and-Synthesis"><a href="#Frame-Warping-and-Synthesis" class="headerlink" title="-Frame Warping and Synthesis"></a>-Frame Warping and Synthesis</h4><p>input: $I_{0}$, $I_{1}$, $f^{‘}_{0\rightarrow1}$, $f^{‘}_{1\rightarrow0}$ - input images and fine flow computed by RFR module</p>
-<p>output: $\hat{I}_{1&#x2F;2}$ - interpolated image</p>
-<p>In this part, ‘.’ refer to directry models.</p>
-<p>Generate the intermediate frame by using the splatting and synthesis strategy of Soft-Splat<a href="#references">[6]</a>.</p>
-<p>All features and input frames are softmax splatted via forward warping. [<strong>.&#x2F;softsplat.py&#x2F;ModuleSoftsplat</strong>]</p>
-<p>All warped frames and features are fed into a GridNet<a href="#references">[7]</a> to synthesize the target frame. [<strong>.&#x2F;GridNet.py&#x2F;GridNet</strong>]</p>
-<hr>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p>[1] Zhang, Song-Hai, et al. “Vectorizing cartoon animations.” IEEE Transactions on Visualization and Computer Graphics 15.4 (2009): 618-629.</p>
-<p>[2] Simonyan, Karen, and Andrew Zisserman. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1556.pdf%E3%80%82">“Very deep convolutional networks for large-scale image recognition.”</a> arXiv preprint arXiv:1409.1556 (2014).</p>
-<p>[3] Liu, Fayao, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1502.07411">“Learning depth from single monocular images using deep convolutional neural fields.”</a> IEEE transactions on pattern analysis and machine intelligence 38.10 (2015): 2024-2039.</p>
-<p>[4] Teed, Zachary, and Jia Deng. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.12039">“Raft: Recurrent all-pairs field transforms for optical flow.”</a> European conference on computer vision. Springer, Cham, 2020.</p>
-<p>[5] Cho, Kyunghyun, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1259.pdf?ref=https://githubhelp.com">“On the properties of neural machine translation: Encoder-decoder approaches.”</a> arXiv preprint arXiv:1409.1259 (2014).</p>
-<p>[6] Niklaus, Simon, and Feng Liu. <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Niklaus_Softmax_Splatting_for_Video_Frame_Interpolation_CVPR_2020_paper.pdf">“Softmax splatting for video frame interpolation.”</a> Proceedings of the IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition. 2020.</p>
-<p>[7] Fourure, Damien, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.07958.pdf?ref=https://githubhelp.com">“Residual conv-deconv grid network for semantic segmentation.”</a> arXiv preprint arXiv:1707.07958 (2017).</p>
-<p>[8] Siyao, Li, et al. <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content/CVPR2021/papers/Siyao_Deep_Animation_Video_Interpolation_in_the_Wild_CVPR_2021_paper.pdf">“Deep animation video interpolation in the wild.”</a> Proceedings of the IEEE&#x2F;CVF Conference on Computer Vision and Pattern Recognition. 2021.</p>
+<table style="width:22%;">
+<colgroup>
+<col style="width: 22%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>### Framework with Dataset and Correspondent Codes ### ###### Framework ######</td>
+</tr>
+<tr class="even">
+<td><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/framework.png" alt="framework" /></td>
+</tr>
+<tr class="odd">
+<td>#### -Dataset #### <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XBDuiEgdd6c0S4OXLF4QvgSn_XNPwc-g/view">ATD-12K</a> Dataset<a href="#references">[8]</a> with triplets of animation frames from videos in the wild. It has been splited into 10k training samples and 2k test samples.</td>
+</tr>
+<tr class="even">
+<td>Specific annotations are in .json file, include:</td>
+</tr>
+<tr class="odd">
+<td>- difficulty levels: 0 : “Easy”, 1 : “Medium”, 2 : “Hard”. - motion RoI(Region of Interest): x, y, width, height. - general_motion_type: &quot;translation&quot;, &quot;rotation&quot;, &quot;scaling&quot;, &quot;deformation&quot;. - behavior: &quot;speaking&quot;, &quot;walking&quot;, &quot;eating&quot;, &quot;sporting&quot;, &quot;fetching&quot;, &quot;others&quot;.</td>
+</tr>
+<tr class="even">
+<td>#### -Segment-Guided Matching (SGM Module) ####</td>
+</tr>
+<tr class="odd">
+<td><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/sgm_module.png" alt="sgm" /></td>
+</tr>
+<tr class="even">
+<td>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span> - input images</td>
+</tr>
+<tr class="odd">
+<td>output: <span class="math inline">\(f_{0\rightarrow1}\)</span>, <span class="math inline">\(f_{1\rightarrow0}\)</span> - coarse optical flow</td>
+</tr>
+<tr class="even">
+<td>In this part, '.' refer to directry models/sgm_model.</td>
+</tr>
+<tr class="odd">
+<td><strong>1. Color Piece Segmentation</strong></td>
+</tr>
+<tr class="even">
+<td>Laplacian filter to extract contours of animation frames<a href="#references">[1]</a>. [<strong>./gen_labelmap.py/dline_of</strong>].</td>
+</tr>
+<tr class="odd">
+<td>“Trapped- ball” algorithm to fill the contours then generate color pieces<a href="#references">[1]</a>. [<strong>./linefiller &amp; gen_labelmap.py/trapped_ball_processed</strong>]</td>
+</tr>
+<tr class="even">
+<td>A segmentation map where pixels of each color piece is labeled by an identity number. [<strong>./linefiller/trappedball_fill.py/build_fill_map</strong>]</td>
+</tr>
+<tr class="odd">
+<td><strong>2. Feature Collection</strong></td>
+</tr>
+<tr class="even">
+<td>Extract features of relu1_2, relu2_2, relu3_4 and relu4_4 layers from pretrained VGG-19 model<a href="#references">[2]</a>. [<strong>./my_models.py/create_VGGFeatNet</strong>]</td>
+</tr>
+<tr class="odd">
+<td>Assemble the features belonging to one segment by the super-pixel pooling<a href="#references">[3]</a>. [<strong>gen_sgm.py/superpixel_pooling</strong>]</td>
+</tr>
+<tr class="even">
+<td><strong>3. Color Piece Matching</strong></td>
+</tr>
+<tr class="odd">
+<td>Compute an affinity metric <span class="math inline">\(\mathcal{A}\)</span> [<strong>./gen_sgm.py</strong> line 553], the distance penalty <span class="math inline">\(\mathcal{L}\_{dist}\)</span> [<strong>./gen_sgm.py</strong> line 559], the size penalty <span class="math inline">\(\mathcal{L}\_{size}\)</span> [<strong>./gen_sgm.py</strong> line 564], the matching map <span class="math inline">\(\mathcal{M}\)</span> [<strong>./gen_sgm.py/mutual_matching</strong>].</td>
+</tr>
+<tr class="even">
+<td><strong>4. Flow Generation</strong></td>
+</tr>
+<tr class="odd">
+<td>Compute flow f [<strong>./gen_sgm.py/get_guidance_flow</strong>]</td>
+</tr>
+<tr class="even">
+<td>#### -Recurrent Flow Refinement Network (RFR Module) ####</td>
+</tr>
+<tr class="odd">
+<td><img src="https://github.com/chenqiann/AnimeInterp-Reading/blob/main/figs/rfr_module.png" alt="rfr" width="311" height="391" align="bottom" /></td>
+</tr>
+<tr class="even">
+<td>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span>, <span class="math inline">\(f_{0\rightarrow1}\)</span>, <span class="math inline">\(f_{1\rightarrow0}\)</span> - input images and coarse optical flow computed by SGM module</td>
+</tr>
+<tr class="odd">
+<td>output: <span class="math inline">\(f^{&#39;}\_{0\rightarrow1}\)</span>, <span class="math inline">\(f^{’}\_{1\rightarrow0}\)</span> - fine flow</td>
+</tr>
+<tr class="even">
+<td>In this part, '.' refer to directry models/rfr_model.</td>
+</tr>
+<tr class="odd">
+<td>Inspired by <a href="#references">[4]</a>, design a transformer-like architecture to recurrently refine the piece-wise flow.</td>
+</tr>
+<tr class="even">
+<td>- 3-layer Conv [<strong>./rfr_new.py/ErrorAttention</strong>] - Feature Net [<strong>./extractor.py/BasicEncoder</strong>] - ConvGRU<a href="#references">[5]</a> [<strong>./update.py/SepConvGRU</strong>] - Correlation [<strong>./corr.py/CorrBlock</strong>]</td>
+</tr>
+<tr class="odd">
+<td>#### -Frame Warping and Synthesis ####</td>
+</tr>
+<tr class="even">
+<td>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span>, <span class="math inline">\(f^{&#39;}\_{0\rightarrow1}\)</span>, <span class="math inline">\(f^{&#39;}\_{1\rightarrow0}\)</span> - input images and fine flow computed by RFR module</td>
+</tr>
+<tr class="odd">
+<td>output: <span class="math inline">\(\hat{I}_{1/2}\)</span> - interpolated image</td>
+</tr>
+<tr class="even">
+<td>In this part, '.' refer to directry models.</td>
+</tr>
+<tr class="odd">
+<td>Generate the intermediate frame by using the splatting and synthesis strategy of Soft-Splat<a href="#references">[6]</a>.</td>
+</tr>
+<tr class="even">
+<td>All features and input frames are softmax splatted via forward warping. [<strong>./softsplat.py/ModuleSoftsplat</strong>]</td>
+</tr>
+<tr class="odd">
+<td>All warped frames and features are fed into a GridNet<a href="#references">[7]</a> to synthesize the target frame. [<strong>./GridNet.py/GridNet</strong>]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="references">References</h3>
+<p>[1] Zhang, Song-Hai, et al. &quot;Vectorizing cartoon animations.&quot; IEEE Transactions on Visualization and Computer Graphics 15.4 (2009): 618-629.</p>
+<p>[2] Simonyan, Karen, and Andrew Zisserman. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1556.pdf%E3%80%82">&quot;Very deep convolutional networks for large-scale image recognition.&quot;</a> arXiv preprint arXiv:1409.1556 (2014).</p>
+<p>[3] Liu, Fayao, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1502.07411">&quot;Learning depth from single monocular images using deep convolutional neural fields.&quot;</a> IEEE transactions on pattern analysis and machine intelligence 38.10 (2015): 2024-2039.</p>
+<p>[4] Teed, Zachary, and Jia Deng. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.12039">&quot;Raft: Recurrent all-pairs field transforms for optical flow.&quot;</a> European conference on computer vision. Springer, Cham, 2020.</p>
+<p>[5] Cho, Kyunghyun, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1259.pdf?ref=https://githubhelp.com">&quot;On the properties of neural machine translation: Encoder-decoder approaches.&quot;</a> arXiv preprint arXiv:1409.1259 (2014).</p>
+<p>[6] Niklaus, Simon, and Feng Liu. <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_CVPR_2020/papers/Niklaus_Softmax_Splatting_for_Video_Frame_Interpolation_CVPR_2020_paper.pdf">&quot;Softmax splatting for video frame interpolation.&quot;</a> Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2020.</p>
+<p>[7] Fourure, Damien, et al. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.07958.pdf?ref=https://githubhelp.com">&quot;Residual conv-deconv grid network for semantic segmentation.&quot;</a> arXiv preprint arXiv:1707.07958 (2017).</p>
+<p>[8] Siyao, Li, et al. <a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content/CVPR2021/papers/Siyao_Deep_Animation_Video_Interpolation_in_the_Wild_CVPR_2021_paper.pdf">&quot;Deep animation video interpolation in the wild.&quot;</a> Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2021.</p>
 
   </div>
 </article>
@@ -252,7 +337,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-Animation-Video-Interpolation-in-the-Wild"><span class="toc-number">1.</span> <span class="toc-text">Deep Animation Video Interpolation in the Wild</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paper-Reading"><span class="toc-number">1.1.</span> <span class="toc-text">Paper Reading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">1.1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Contributions"><span class="toc-number">1.1.2.</span> <span class="toc-text">Contributions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Limits"><span class="toc-number">1.1.3.</span> <span class="toc-text">Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Framework-with-Dataset-and-Correspondent-Codes"><span class="toc-number">1.1.4.</span> <span class="toc-text">Framework with Dataset and Correspondent Codes</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#Framework"><span class="toc-number">1.1.4.0.0.1.</span> <span class="toc-text">Framework</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dataset"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">-Dataset</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Segment-Guided-Matching-SGM-Module"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">-Segment-Guided Matching (SGM Module)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Recurrent-Flow-Refinement-Network-RFR-Module"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">-Recurrent Flow Refinement Network (RFR Module)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Frame-Warping-and-Synthesis"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">-Frame Warping and Synthesis</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">1.1.5.</span> <span class="toc-text">References</span></a></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#deep-animation-video-interpolation-in-the-wild"><span class="toc-number">1.</span> <span class="toc-text">Deep Animation Video Interpolation in the Wild</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#paper-reading"><span class="toc-number">1.1.</span> <span class="toc-text">Paper Reading</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#introduction"><span class="toc-number">1.1.1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limits"><span class="toc-number">1.1.2.</span> <span class="toc-text">Limits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">1.1.3.</span> <span class="toc-text">References</span></a></li></ol></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
