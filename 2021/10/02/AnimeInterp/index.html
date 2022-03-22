@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://chenqiann.github.io/2021/10/02/AnimeInterp/sgm_module.png">
 <meta property="og:image" content="https://chenqiann.github.io/2021/10/02/AnimeInterp/rfr_module.png">
 <meta property="article:published_time" content="2021-10-02T09:19:35.000Z">
-<meta property="article:modified_time" content="2022-03-22T05:32:40.037Z">
+<meta property="article:modified_time" content="2022-03-22T05:36:38.591Z">
 <meta property="article:author" content="Chen Qian">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://chenqiann.github.io/2021/10/02/AnimeInterp/framework.png">
@@ -64,7 +64,8 @@
 	
 <meta name="generator" content="Hexo 6.1.0"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
@@ -171,7 +172,7 @@
 <li>Large Motions: Cartoons express stories via exaggeration. Some of the motions are non-linear and extremely large.</li>
 </ul>
 <p>Along with original challenges of natural video interpolation, like occlussion handling, video interpolation in animations remains a challenging task.</p>
-<p>This paper propsed an effective framework, AnimeInterp<a href="#References">[8]</a>, with two dedicated modules, <a href="#Segment-Guided-Matching-SGM-Module">SGM</a> and <a href="#Recurrent-Flow-Refinement-Network-RFR-Module">RFR</a>, in a coarse-to-fine manner.</p>
+<p>This paper propsed an effective framework, AnimeInterp<a href="#references">[8]</a>, with two dedicated modules, <a href="#segment-guided-matching-sgm-module">SGM</a> and <a href="#recurrent-flow-refinement-network-rfr-module">RFR</a>, in a coarse-to-fine manner.</p>
 <hr />
 <h3 id="contributions">Contributions</h3>
 <ul>
@@ -187,11 +188,9 @@
 <hr />
 <h3 id="framework-with-dataset-and-correspondent-codes">Framework with Dataset and Correspondent Codes</h3>
 <h6 id="framework">Framework</h6>
-<figure>
-<img src="framework.png" alt="framework" /><figcaption>framework</figcaption>
-</figure>
+<p><img src="framework.png" /></p>
 <h4 id="dataset">-Dataset</h4>
-<p><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XBDuiEgdd6c0S4OXLF4QvgSn_XNPwc-g/view">ATD-12K</a> Dataset<a href="#References">[8]</a> with triplets of animation frames from videos in the wild. It has been splited into 10k training samples and 2k test samples.</p>
+<p><a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1XBDuiEgdd6c0S4OXLF4QvgSn_XNPwc-g/view">ATD-12K</a> Dataset<a href="#references">[8]</a> with triplets of animation frames from videos in the wild. It has been splited into 10k training samples and 2k test samples.</p>
 <p>Specific annotations are in .json file, include:</p>
 <ul>
 <li>difficulty levels: 0 : “Easy”, 1 : “Medium”, 2 : “Hard”.</li>
@@ -200,44 +199,40 @@
 <li>behavior: &quot;speaking&quot;, &quot;walking&quot;, &quot;eating&quot;, &quot;sporting&quot;, &quot;fetching&quot;, &quot;others&quot;.</li>
 </ul>
 <h4 id="segment-guided-matching-sgm-module">-Segment-Guided Matching (SGM Module)</h4>
-<figure>
-<img src="sgm_module.png" alt="sgm" /><figcaption>sgm</figcaption>
-</figure>
+<p><img src="sgm_module.png" /></p>
 <p>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span> - input images</p>
 <p>output: <span class="math inline">\(f_{0\rightarrow1}\)</span>, <span class="math inline">\(f_{1\rightarrow0}\)</span> - coarse optical flow</p>
 <p>In this part, '.' refer to directry models/sgm_model.</p>
 <p><strong>1. Color Piece Segmentation</strong></p>
-<p>Laplacian filter to extract contours of animation frames<a href="#References">[1]</a>. [<strong>./gen_labelmap.py/dline_of</strong>].</p>
-<p>“Trapped- ball” algorithm to fill the contours then generate color pieces<a href="#References">[1]</a>. [<strong>./linefiller &amp; gen_labelmap.py/trapped_ball_processed</strong>]</p>
+<p>Laplacian filter to extract contours of animation frames<a href="#references">[1]</a>. [<strong>./gen_labelmap.py/dline_of</strong>].</p>
+<p>“Trapped- ball” algorithm to fill the contours then generate color pieces<a href="#references">[1]</a>. [<strong>./linefiller &amp; gen_labelmap.py/trapped_ball_processed</strong>]</p>
 <p>A segmentation map where pixels of each color piece is labeled by an identity number. [<strong>./linefiller/trappedball_fill.py/build_fill_map</strong>]</p>
 <p><strong>2. Feature Collection</strong></p>
-<p>Extract features of relu1_2, relu2_2, relu3_4 and relu4_4 layers from pretrained VGG-19 model<a href="#References">[2]</a>. [<strong>./my_models.py/create_VGGFeatNet</strong>]</p>
-<p>Assemble the features belonging to one segment by the super-pixel pooling<a href="#References">[3]</a>. [<strong>gen_sgm.py/superpixel_pooling</strong>]</p>
+<p>Extract features of relu1_2, relu2_2, relu3_4 and relu4_4 layers from pretrained VGG-19 model<a href="#references">[2]</a>. [<strong>./my_models.py/create_VGGFeatNet</strong>]</p>
+<p>Assemble the features belonging to one segment by the super-pixel pooling<a href="#references">[3]</a>. [<strong>gen_sgm.py/superpixel_pooling</strong>]</p>
 <p><strong>3. Color Piece Matching</strong></p>
-<p>Compute an affinity metric <span class="math inline">\(\mathcal{A}\)</span> [<strong>./gen_sgm.py</strong> line 553], the distance penalty <span class="math inline">\(\mathcal{L}\_{dist}\)</span> [<strong>./gen_sgm.py</strong> line 559], the size penalty <span class="math inline">\(\mathcal{L}\_{size}\)</span> [<strong>./gen_sgm.py</strong> line 564], the matching map <span class="math inline">\(\mathcal{M}\)</span> [<strong>./gen_sgm.py/mutual_matching</strong>].</p>
+<p>Compute an affinity metric <span class="math inline">\(\mathcal{A}\)</span> [<strong>./gen_sgm.py</strong> line 553], the distance penalty <span class="math inline">\(\mathcal{L}_{dist}\)</span> [<strong>./gen_sgm.py</strong> line 559], the size penalty <span class="math inline">\(\mathcal{L}_{size}\)</span> [<strong>./gen_sgm.py</strong> line 564], the matching map <span class="math inline">\(\mathcal{M}\)</span> [<strong>./gen_sgm.py/mutual_matching</strong>].</p>
 <p><strong>4. Flow Generation</strong></p>
 <p>Compute flow f [<strong>./gen_sgm.py/get_guidance_flow</strong>]</p>
 <h4 id="recurrent-flow-refinement-network-rfr-module">-Recurrent Flow Refinement Network (RFR Module)</h4>
-<figure>
-<img src="rfr_module.png" alt="rfr" /><figcaption>rfr</figcaption>
-</figure>
+<p><img src="rfr_module.png" /></p>
 <p>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span>, <span class="math inline">\(f_{0\rightarrow1}\)</span>, <span class="math inline">\(f_{1\rightarrow0}\)</span> - input images and coarse optical flow computed by SGM module</p>
 <p>output: <span class="math inline">\(f^{’}_{0\rightarrow1}\)</span>, <span class="math inline">\(f^{’}_{1\rightarrow0}\)</span> - fine flow</p>
 <p>In this part, '.' refer to directry models/rfr_model.</p>
-<p>Inspired by <a href="#References">[4]</a>, design a transformer-like architecture to recurrently refine the piece-wise flow.</p>
+<p>Inspired by <a href="#references">[4]</a>, design a transformer-like architecture to recurrently refine the piece-wise flow.</p>
 <ul>
 <li>3-layer Conv [<strong>./rfr_new.py/ErrorAttention</strong>]</li>
 <li>Feature Net [<strong>./extractor.py/BasicEncoder</strong>]</li>
-<li>ConvGRU<a href="#References">[5]</a> [<strong>./update.py/SepConvGRU</strong>]</li>
+<li>ConvGRU<a href="#references">[5]</a> [<strong>./update.py/SepConvGRU</strong>]</li>
 <li>Correlation [<strong>./corr.py/CorrBlock</strong>]</li>
 </ul>
 <h4 id="frame-warping-and-synthesis">-Frame Warping and Synthesis</h4>
 <p>input: <span class="math inline">\(I_{0}\)</span>, <span class="math inline">\(I_{1}\)</span>, <span class="math inline">\(f^{’}_{0\rightarrow1}\)</span>, <span class="math inline">\(f^{’}_{1\rightarrow0}\)</span> - input images and fine flow computed by RFR module</p>
 <p>output: <span class="math inline">\(\hat{I}_{1/2}\)</span> - interpolated image</p>
 <p>In this part, '.' refer to directry models.</p>
-<p>Generate the intermediate frame by using the splatting and synthesis strategy of Soft-Splat<a href="#References">[6]</a>.</p>
+<p>Generate the intermediate frame by using the splatting and synthesis strategy of Soft-Splat<a href="#references">[6]</a>.</p>
 <p>All features and input frames are softmax splatted via forward warping. [<strong>./softsplat.py/ModuleSoftsplat</strong>]</p>
-<p>All warped frames and features are fed into a GridNet<a href="#References">[7]</a> to synthesize the target frame. [<strong>./GridNet.py/GridNet</strong>]</p>
+<p>All warped frames and features are fed into a GridNet<a href="#references">[7]</a> to synthesize the target frame. [<strong>./GridNet.py/GridNet</strong>]</p>
 <hr />
 <h3 id="references">References</h3>
 <p>[1] Zhang, Song-Hai, et al. &quot;Vectorizing cartoon animations.&quot; IEEE Transactions on Visualization and Computer Graphics 15.4 (2009): 618-629.</p>
@@ -386,20 +381,5 @@
 
 <!-- utterances Comments -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
