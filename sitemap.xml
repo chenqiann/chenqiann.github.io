@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://chenqiann.github.io/2022/04/03/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%9A%84%E5%90%AB%E4%B9%89/</loc>
+    
+    <lastmod>2022-04-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://chenqiann.github.io/2021/10/02/AnimeInterp/</loc>
     
     <lastmod>2022-03-22</lastmod>
@@ -49,7 +58,7 @@
 
   <url>
     <loc>https://chenqiann.github.io/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-04-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -59,14 +68,28 @@
   
   <url>
     <loc>https://chenqiann.github.io/categories/PaperReading/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://chenqiann.github.io/categories/PaperReading/Animation-Video-Interpolation/</loc>
-    <lastmod>2022-03-22</lastmod>
+    <lastmod>2022-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chenqiann.github.io/categories/Note/</loc>
+    <lastmod>2022-04-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://chenqiann.github.io/categories/Note/Math/</loc>
+    <lastmod>2022-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
